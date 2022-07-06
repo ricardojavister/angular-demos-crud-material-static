@@ -1,0 +1,120 @@
+<mat-card>
+  <mat-card-title>{{ title }}</mat-card-title>
+  <form
+    [formGroup]="productForm"
+    (ngSubmit)="onFormSubmit()"
+    class="form"
+    enctype="multipart/form-data"
+  >
+    <div class="example-container">
+      <mat-form-field>
+        <input
+          maxlength="30"
+          formControlName="id"
+          matTooltip="Enter Id"
+          matInput
+          placeholder="Id"
+        />
+      </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="!productForm.get('id').value && productForm.get('id').touched"
+        ></span>
+      </mat-error>
+
+      <mat-form-field>
+        <input
+          maxlength="100"
+          formControlName="name"
+          matTooltip="Enter Name"
+          matInput
+          placeholder="Name"
+        />
+      </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            !productForm.get('name').value && productForm.get('name').touched
+          "
+        ></span>
+      </mat-error>
+
+      <mat-form-field>
+        <input
+          maxlength="100"
+          formControlName="description"
+          matTooltip="Enter Description"
+          matInput
+          placeholder="Description"
+        />
+      </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            !productForm.get('description').value &&
+            productForm.get('description').touched
+          "
+        ></span>
+      </mat-error>
+
+      <mat-form-field>
+        <input
+          maxlength="10"
+          formControlName="price"
+          matTooltip="Enter Price"
+          matInput
+          placeholder="Price"
+        />
+      </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            !productForm.get('price').value && productForm.get('price').touched
+          "
+        ></span>
+      </mat-error>
+
+      <mat-form-field>
+        <input
+          formControlName="image"
+          matTooltip="Enter Image Url"
+          matInput
+          placeholder="Image"
+        />
+      </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            !productForm.get('image').value && productForm.get('image').touched
+          "
+        ></span>
+      </mat-error>
+
+      <mat-dialog-actions>
+        <button type="reset" class="mat-raised-button" (click)="close()">
+          Close
+        </button>
+        <button
+          *ngIf="!data?.id"
+          type="submit"
+          mat-raised-button
+          color="accent"
+          matTooltip="Click Submit Button"
+          class="button"
+        >
+          Save
+        </button>
+        <button
+          *ngIf="data?.id"
+          type="submit"
+          mat-raised-button
+          color="accent"
+          matTooltip="Click Submit Button"
+          class="button"
+        >
+          Update
+        </button>
+      </mat-dialog-actions>
+    </div>
+  </form>
+</mat-card>
